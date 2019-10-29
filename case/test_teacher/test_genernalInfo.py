@@ -28,10 +28,10 @@ class GenernalInfo(Funciton):
         Funciton().public_method("27")
 
 
-    def test_03(self):
-        # 获取手机验证码
-        Log().info("获取手机验证码")
-        Funciton().public_method("28")
+    # def test_03(self):
+    #     # 获取手机验证码
+    #     Log().info("获取手机验证码")
+    #     Funciton().public_method("28")
 
 
     def test_04(self):

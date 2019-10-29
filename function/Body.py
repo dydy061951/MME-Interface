@@ -17,4 +17,4 @@ class Body(object):
 
     test_teacher_sheet="Teacher"
 
-    uat_teacher_sheet=""
+    uat_teacher_sheet="Teacher_uat"

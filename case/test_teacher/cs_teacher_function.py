@@ -30,10 +30,12 @@ class Funciton(unittest.TestCase):
             self.r = send_request(method, self.urltitle + url_title,self.header,param )
             actual_result = self.r.status_code
             expected_results = int(readExcel(self.datainfo,self.sheetpage, "G" + n))
+            self.result_assertion(expected_results, actual_result, n)
             self.assertEqual(int(readExcel(self.datainfo, self.sheetpage, "G" + n)), actual_result)
-            self.result_assertion(expected_results,actual_result,n)
+
         except:
             traceback.print_exc()
+            print("Exception:" + self.r.json()['msg'])
         finally:
             writeExcel(self.datainfo, self.sheetpage,"J" + n, current_time)
 
