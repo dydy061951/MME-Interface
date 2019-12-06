@@ -1,10 +1,11 @@
 #encoding=utf-8
 
+import unittest
 from case.uat_teacher.uat_teacher_function import *
 from function.Logfz import Log
 
 
-class GenernalInfo(Funciton):
+class GenernalInfo(unittest.TestCase):
     # 个人信息 模块测试
 
     @classmethod

@@ -27,7 +27,7 @@ class CustomerInfo(unittest.TestCase):
         n="8"
         json_data={"name":"吉一客户"+Funciton().randomnu,"nickName":"吉一客户","realName":"吉林一级客户","code":"j"+Funciton().randomnu+"","contact":"吉林一级客户","email":"13323132313@qq.com",
                    "password":"111111","confirmPwd":"111111","mobile":"13323132313","province":"22","city":"2201","district":"220102","address":"南关",
-                   "account":"jilin1j-"+Funciton().randomnu+"-"+Funciton().randomnu+""}
+                   "account":"jilin1j-"+Funciton().randomnu+"-"+Funciton().randomnu+"","schoolType": "7"}
         current_time = time.strftime("%Y/%m/%d-%H:%M:%S")
         try:
             # 顺序依次：method、url、header、param(data)

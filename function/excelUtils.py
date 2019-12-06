@@ -13,28 +13,28 @@ def getFilePath(filename):
     return filePath
 
 
-def readExcel(filename,sheet,rowcell):
+def readExcel(filename,rowcell):
     # 读取Excel文件
 
     filePath=getFilePath(filename)
     # 打开excel文件读取内容
     app = xw.App(visible=False,add_book=False)
     datas=app.books.open(filePath)
-    sheet1=datas.sheets[sheet]
+    sheet1=datas.sheets["Sheet1"]
     data=sheet1.range(rowcell).value
     datas.close()
     app.quit()
     return data
 
 
-def writeExcel(filename,sheet,seat,actualresult):
+def writeExcel(filename,seat,actualresult):
     # 写入Excel文件
 
     filePath = getFilePath(filename)
     app = xw.App(visible=False, add_book=False)
     # 打开excel文件写入内容
     datas = app.books.open(filePath)
-    sheet1 = datas.sheets[sheet]
+    sheet1 = datas.sheets["Sheet1"]
     sheet1.range(seat).value = actualresult
     datas.save()
     datas.close()
@@ -64,10 +64,25 @@ def writeCsv(filename,a,b):
     dataframe.to_csv(filePath,mode='a+',columns=['ActualResult'])
 
 
+def pd_readExcel(filename,row):
+    # pandas读取excel指定行
+
+    filePath = getFilePath(filename)
+    # 默认读取到这个Excel的第一个表单
+    datas = pd.DataFrame(pd.read_excel(filePath))
+    # 0表示第一行 读取数据并不包含表头
+    data = datas.loc[row-2].tolist()
+    return data
+
+
 
 # data=ExcelUtils().readCsv("testdata1.csv")
 # print(data[1][1])
 
-# print(readExcel("Interface_test.xlsx","Agent","F5"))
+# print(type(readExcel("Interface_test.xlsx","Agent","F24")))
+# print(type(readExcel("Interface_test.xlsx","Agent","F40")))
+
+# a=pd_readExcel("test_agent.xlsx",20)
+# print(a)
 
 

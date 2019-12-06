@@ -1,8 +1,8 @@
 #encoding=utf-8
-import unittest
 
 from case.test_teacher.cs_teacher_function import *
 from function.Logfz import Log
+import unittest
 
 
 class LearnInfo(unittest.TestCase):
@@ -15,6 +15,7 @@ class LearnInfo(unittest.TestCase):
     @classmethod
     def tearDownClass(self):
         print("end......")
+
 
     def test_01(self):
         # 学情分析-上课进度

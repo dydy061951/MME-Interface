@@ -1,8 +1,8 @@
 #encoding=utf-8
-import unittest
 
 from case.test_teacher.cs_teacher_function import *
 from function.Logfz import Log
+import unittest
 
 
 class CourseInfo(unittest.TestCase):

@@ -11,10 +11,3 @@ class Body(object):
 
     online=""
 
-    test_agent_sheet="Agent"
-
-    uat_agent_sheet="Agent_uat"
-
-    test_teacher_sheet="Teacher"
-
-    uat_teacher_sheet="Teacher_uat"

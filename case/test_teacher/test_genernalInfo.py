@@ -2,9 +2,10 @@
 
 from case.test_teacher.cs_teacher_function import *
 from function.Logfz import Log
+import unittest
 
 
-class GenernalInfo(Funciton):
+class GenernalInfo(unittest.TestCase):
     # 个人信息 模块测试
 
     @classmethod
