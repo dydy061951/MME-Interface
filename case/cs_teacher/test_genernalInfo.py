@@ -1,6 +1,6 @@
 #encoding=utf-8
 
-from case.test_teacher.cs_teacher_function import *
+from case.cs_teacher.cs_teacher_function import *
 from function.Logfz import Log
 import unittest
 

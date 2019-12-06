@@ -1,7 +1,7 @@
 #encoding=utf-8
 import json,unittest
 
-from case.test_teacher.cs_teacher_function import *
+from case.cs_teacher.cs_teacher_function import *
 from function.request_api import send_request
 from function.excelUtils import *
 from function.Logfz import Log
