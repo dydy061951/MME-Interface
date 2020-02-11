@@ -2,7 +2,6 @@
 import unittest, random
 
 from case.cs_agent.cs_agent_function import *
-from function.request_api import send_request
 from function.excelUtils import *
 from function.Logfz import Log
 
@@ -26,92 +25,171 @@ class AccountInfo(unittest.TestCase):
     def test_01(self):
         # 查看客户账号列表
         Log().info("查看客户账号列表")
-        Funciton().public_method(21,"21")
+
+        F = Funciton()
+        request_info = F.get_request_info(21)
+        actual_result = F.public_method("21").status_code  # int
+        expected_results = int(request_info[6])  # int
+        F.result_assertion(expected_results, actual_result, "21")
+        try:
+            self.assertEqual(expected_results, actual_result)
+        except Exception as msg:
+            Log().info("Exception:" + F.public_method("21").json()['msg'])
+            raise msg
 
 
     def test_02(self):
         # 新增客户管理员查询已有客户
         Log().info("新增客户管理员查询已有客户")
-        Funciton().public_method(22,"22")
+
+        F = Funciton()
+        request_info = F.get_request_info(22)
+        actual_result = F.public_method("22").status_code  # int
+        expected_results = int(request_info[6])  # int
+        F.result_assertion(expected_results, actual_result, "22")
+        try:
+            self.assertEqual(expected_results, actual_result)
+        except Exception as msg:
+            Log().info("Exception:" + F.public_method("22").json()['msg'])
+            raise msg
 
 
     def test_03(self):
         # 新增客户管理员
         Log().info("新增客户管理员")
-        n = "23"
-        json_data = {"email":"13323132313@qq.com","password":"111111","confirmPwd":"111111","mobile":"13323132313",
-                     "userName":"yijikehu-"+self.randomnu+"-"+self.randomnu+"","tenantId":31,
-                     "realName":"一级"+self.randomnu,"nickName":"一级"+self.randomnu}
 
-        current_time = time.strftime("%Y/%m/%d-%H:%M:%S")
-        url = Body().test_url + readExcel(Funciton().datainfo, "E" + n)
+        F = Funciton()
+        request_info = F.get_request_info(23)
+        dict=json.loads(request_info[5])
+        dict["userName"]="yijikehu"+self.randomnu+"-"+self.randomnu+""
+        str_dict=json.dumps(dict)    # 这里转换不能直接用 str(dict)，会使字典格式属性和值单双引号不一致
+        writeExcel("test_agent.xlsx","F23",str_dict)
+        request_info = F.get_request_info(23)
+        actual_result = F.public_method("23").status_code  # int
+        expected_results = int(request_info[6])  # int
+        F.result_assertion(expected_results, actual_result, "23")
         try:
-            # 顺序依次：method、url、header、param(data)
-            r = send_request(readExcel(Funciton().datainfo,"D" + n), url,self.header, json.dumps(json_data))
-            actual_result = r.status_code
-            expected_results = int(readExcel(Funciton().datainfo, "G" + n))
-            Funciton().result_assertion(expected_results,actual_result, n)
-        except:
-            traceback.print_exc()
-        finally:
-            writeExcel(Funciton().datainfo,"J" + n, current_time)
+            self.assertEqual(expected_results, actual_result)
+        except Exception as msg:
+            Log().info("Exception:" + F.public_method("23").json()['msg'])
+            raise msg
 
 
     def test_04(self):
         # 修改客户管理员
         Log().info("修改客户管理员")
-        Funciton().public_method(24,"24")
+
+        F = Funciton()
+        request_info = F.get_request_info(24)
+        actual_result = F.public_method("24").status_code  # int
+        expected_results = int(request_info[6])  # int
+        F.result_assertion(expected_results, actual_result, "24")
+        try:
+            self.assertEqual(expected_results, actual_result)
+        except Exception as msg:
+            Log().info("Exception:" + F.public_method("24").json()['msg'])
+            raise msg
 
 
     def test_05(self):
         # 客户重置密码
         Log().info("客户重置密码")
-        Funciton().public_method(25,"25")
+
+        F = Funciton()
+        request_info = F.get_request_info(25)
+        actual_result = F.public_method("25").status_code  # int
+        expected_results = int(request_info[6])  # int
+        F.result_assertion(expected_results, actual_result, "25")
+        try:
+            self.assertEqual(expected_results, actual_result)
+        except Exception as msg:
+            Log().info("Exception:" + F.public_method("25").json()['msg'])
+            raise msg
 
 
     def test_06(self):
         # 查询代理商管理员列表
         Log().info("查询代理商管理员列表")
-        Funciton().public_method(26,"26")
+
+        F = Funciton()
+        request_info = F.get_request_info(26)
+        actual_result = F.public_method("26").status_code  # int
+        expected_results = int(request_info[6])  # int
+        F.result_assertion(expected_results, actual_result, "26")
+        try:
+            self.assertEqual(expected_results, actual_result)
+        except Exception as msg:
+            Log().info("Exception:" + F.public_method("26").json()['msg'])
+            raise msg
 
 
     def test_07(self):
         # 新增代理商管理员
         Log().info("新增代理商管理员")
-        n = "27"
-        json_data = {"email":"13323132313@qq.com","password":"111111","confirmPwd":"111111","contact":"13323132313",
-                     "account":"yijiguanli-"+self.randomnu+"-"+self.randomnu+"","name":"一级管理"}
+        F = Funciton()
 
-        current_time = time.strftime("%Y/%m/%d-%H:%M:%S")
-        url = Body().test_url + readExcel(Funciton().datainfo, "E" + n)
+        request_info = F.get_request_info(27)
+        dict = json.loads(request_info[5])
+        dict["account"] = "yjgl" + self.randomnu + "-" + self.randomnu + ""
+        str_dict = json.dumps(dict)  # 这里转换不能直接用 str(dict)，会使字典格式属性和值单双引号不一致
+        writeExcel("test_agent.xlsx", "F27", str_dict)
+        request_info = F.get_request_info(27)
+        actual_result = F.public_method("27").status_code  # int
+        expected_results = int(request_info[6])  # int
+        F.result_assertion(expected_results, actual_result, "27")
         try:
-            # 顺序依次：method、url、header、param(data)
-            r = send_request(readExcel(Funciton().datainfo, "D" + n),url,self.header, json.dumps(json_data))
-            actual_result = r.status_code
-            expected_results = int(readExcel(Funciton().datainfo, "G" + n))
-            Funciton().result_assertion(expected_results, actual_result, n)
-        except:
-            traceback.print_exc()
-        finally:
-            writeExcel(Funciton().datainfo, "J" + n, current_time)
+            self.assertEqual(expected_results, actual_result)
+        except Exception as msg:
+            Log().info("Exception:" + F.public_method("27").json()['msg'])
+            raise msg
 
 
     def test_08(self):
         # 修改代理商管理员
         Log().info("修改代理商管理员")
-        Funciton().public_method(28,"28")
+
+        F = Funciton()
+        request_info = F.get_request_info(28)
+        actual_result = F.public_method("28").status_code  # int
+        expected_results = int(request_info[6])  # int
+        F.result_assertion(expected_results, actual_result, "28")
+        try:
+            self.assertEqual(expected_results, actual_result)
+        except Exception as msg:
+            Log().info("Exception:" + F.public_method("28").json()['msg'])
+            raise msg
 
 
     def test_09(self):
         # 代理商重置密码
         Log().info("代理商重置密码")
-        Funciton().public_method(29,"29")
+
+        F = Funciton()
+        request_info = F.get_request_info(29)
+        actual_result = F.public_method("29").status_code  # int
+        expected_results = int(request_info[6])  # int
+        F.result_assertion(expected_results, actual_result, "29")
+        try:
+            self.assertEqual(expected_results, actual_result)
+        except Exception as msg:
+            Log().info("Exception:" + F.public_method("29").json()['msg'])
+            raise msg
 
 
     def test_10(self):
         # 查看消息通知列表
         Log().info("查看消息通知列表")
-        Funciton().public_method(30,"30")
+
+        F = Funciton()
+        request_info = F.get_request_info(30)
+        actual_result = F.public_method("30").status_code  # int
+        expected_results = int(request_info[6])  # int
+        F.result_assertion(expected_results, actual_result, "30")
+        try:
+            self.assertEqual(expected_results, actual_result)
+        except Exception as msg:
+            Log().info("Exception:" + F.public_method("30").json()['msg'])
+            raise msg
 
 
 if __name__ == '__main__':

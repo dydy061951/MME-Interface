@@ -2,6 +2,7 @@
 import requests,json,urllib3
 
 # 请求封装
+
 def send_request(method,url,header,data):
     if(method=="get"):
         return send_get(url,header,data)

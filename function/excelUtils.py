@@ -1,13 +1,15 @@
 #encoding=utf-8
-import os,csv
+
+import os,csv,xlrd
 import xlwings as xw
 from itertools import islice
 import pandas as pd
 
 
-
 def getFilePath(filename):
     # 获取data文件地址
+
+    # 获取当前文件下的路径地址
     basePath = os.path.dirname(__file__)
     filePath = basePath.replace("function", "data\\" + filename)
     return filePath
@@ -68,21 +70,15 @@ def pd_readExcel(filename,row):
     # pandas读取excel指定行
 
     filePath = getFilePath(filename)
-    # 默认读取到这个Excel的第一个表单
+    # 默认读取Excel的第一个表单
     datas = pd.DataFrame(pd.read_excel(filePath))
-    # 0表示第一行 读取数据并不包含表头
+    # 读取数据不包含表头，从0开始
     data = datas.loc[row-2].tolist()
     return data
 
 
 
-# data=ExcelUtils().readCsv("testdata1.csv")
-# print(data[1][1])
 
-# print(type(readExcel("Interface_test.xlsx","Agent","F24")))
-# print(type(readExcel("Interface_test.xlsx","Agent","F40")))
 
-# a=pd_readExcel("test_agent.xlsx",20)
-# print(a)
 
 
